@@ -7,6 +7,8 @@ const Contacts = require('./models/contactsModel');
 const Songs = require('./models/songsModel');
 const catchAsync = require('./utils/catchAsync');
 
+dotenv.config({ path: './config.env' });
+
 const app = express();
 app.use(express.json({ limit: '10kb' }));
 
@@ -134,8 +136,15 @@ app.get('/api/v1/users', async (req, res) => {
   });
 });
 
+const DB = process.env.DATABASE.replace(
+  '<PASSWORD>',
+  process.env.DATABASE_PASSWORD
+);
+//'mongodb://localhost:27017/natours'
+
+
 mongoose
-  .connect('mongodb+srv://turatsinze:fvZ1sCfyO5630MtK@cluster0-p371t.mongodb.net/natours?retryWrites=true&w=majority', {
+  .connect(DB, {
     useNewUrlParser: true,
     useCreateIndex: true,
     useFindAndModify: false,
