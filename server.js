@@ -1,6 +1,7 @@
 const http = require('http');
 const express = require('express');
 const mongoose = require('mongoose');
+const compression = require('compression');
 
 const Contacts = require('./models/contactsModel');
 const Songs = require('./models/songsModel');
@@ -9,6 +10,8 @@ const catchAsync = require('./utils/catchAsync');
 const app = express();
 app.use(express.json({ limit: '10kb' }));
 
+
+app.use(compression());
 
 // Get all songs endpoint
 app.get('/api/v1/songs', async (req, res) => {
