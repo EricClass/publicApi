@@ -7,7 +7,7 @@ const Contacts = require('./models/contactsModel');
 const Songs = require('./models/songsModel');
 const catchAsync = require('./utils/catchAsync');
 
-dotenv.config({ path: './config.env' });
+//dotenv.config({ path: './config.env' });
 
 const app = express();
 app.use(express.json({ limit: '10kb' }));
